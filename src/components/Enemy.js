@@ -1,14 +1,15 @@
-function Enemy(props, handleAttack, handleRespawn){
+function Enemy(props){
 
-    // function handleAttack(){
-    //     if(props.hp > 0){
-    //         props.handleAttack();
-    //         console.log("I am in Enemy and I am handling attack")
-    //         console.log("My hp is, {}", props.hp)
-    //     } else {
-    //         props.handleRespawn();
-    //     }
-    // }
+    function handleAttack(){
+        if(props.hp > 0){
+            props.handleAttack();
+            console.log("I am in Enemy and I am handling attack")
+            console.log("My hp is, {}", props.hp)
+        } else {
+            props.handleRespawn();
+            console.log('RESPAWN A GO GO BABY')
+        }
+    }
 
     return (
         <div className="enemy-container">

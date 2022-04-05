@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   color: white;
+  font-family: 'Press Start 2P';
+}
+
+button {
+  font-family: 'Press Start 2p';
 }
 
 code {
