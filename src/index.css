@@ -18,3 +18,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.game-container{
+  width: 1024;
+  height: 768;
+  background-color: rgb(48, 48, 48);
+  padding: 20px;
+  border: solid white 5px;
+  border-radius: 5px;
+}
+
+.enemy-container{
+  width: 300;
+  height: 400;
+  padding: 20px;
+  border: solid white 3px;
+  border-radius: 5px;
+}

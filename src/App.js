@@ -20,7 +20,16 @@ function App() {
     {"name": "Mushaboom", "hp": 80, "maxHP": 80, "src": Assets.Images.Mushaboom},
     {"name": "Skeleton", "hp": 20, "maxHP": 20, "src": Assets.Images.Skeleton},
     {"name": "Mimic", "hp": 90, "maxHP": 90, "src": Assets.Images.Mimic},
-    {"name": "Unborn", "hp": 40, "maxHP": 40, "src": Assets.Images.Unborn}
+    {"name": "Unborn", "hp": 40, "maxHP": 40, "src": Assets.Images.Unborn},
+    {"name": "Oni", "hp": 60, "maxHP": 60, "src": Assets.Images.Oni},
+    {"name": "Doll", "hp": 40, "maxHP": 40, "src": Assets.Images.Doll},
+    {"name": "Shambler", "hp": 80, "maxHP": 80, "src": Assets.Images.Shambler},
+    {"name": "Screamer", "hp": 70, "maxHP": 70, "src": Assets.Images.Screamer},
+    {"name": "Tonberry", "hp": 90, "maxHP": 90, "src": Assets.Images.Tonberry}
+  ]
+
+  let bosses = [
+    {"name": "Rare Pepe", "hp": 100, "maxHP": 100, "src": Assets.Images.Pepe}
   ]
 
   const getMonsterCount = () => {
@@ -36,6 +45,7 @@ function App() {
 
   useEffect(() => {
     setMonsterHP(currentMonster);
+    checkHP(currentMonster);
   }, [currentMonster])
 
   const [newMonster, setNewMonster] = useState({
@@ -57,12 +67,17 @@ function App() {
     }
 
   const handleRespawn = () => {
+      if(killCount === 5){
+        setNewMonster(bosses[0]);
+        setKillCount(0);
+      } else {
       currentMonster = monsters[monsterRandomiser()];
       setNewMonster(currentMonster);
       console.log("I am in handle respawn and the current monstert is {}", currentMonster);
       setKillCount(killCount + 1);
+    }
       console.log(killCount);
-      setXP(xp + 10);
+      setXP(xp + (10 * (1 + xpModifier())));
       checkXP();
       console.log('RESPAWN GET')
     }
@@ -73,6 +88,12 @@ function App() {
     } 
     let toNextLevel = nextLevel - xp;
     console.log(toNextLevel + 'xp to next level.')
+  }
+
+  const checkHP = (currentMonster) => {
+    if(currentMonster.hp <= 0){
+      handleRespawn();
+    }
   }
 
   const handleLevelUp = () => {
@@ -100,15 +121,39 @@ function App() {
   const getMonsterMaxHP = () => {
     return newMonster.maxHP;
   }
+
+  const getMonsterName = () => {
+    return newMonster.name;
+  }
+
+  const getMonsterSRC = () => {
+    return newMonster.src
+  }
+
+  const calculateNextLevel = () => {
+    if (nextLevel - xp >= 0){
+    return nextLevel - xp;
+    }
+    return 0;
+  }
+
+  const xpModifier = () => {
+    if(level === 1){
+      return 0;
+    }
+    return level / 10;
+  }
   
 
   return (
     <div className="game-container">
-      <Enemy name={currentMonster.name} src={currentMonster.src} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
+      <Enemy name={getMonsterName()} src={getMonsterSRC()} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
       {/* <p>{monsters[0].name}</p>
       <img src={monsters[0].src} alt="monstarrr"/>
       <p>HP: {monsters[0].hp}/{monsters[0].maxHP}</p> */}
       <h1>Lv.{level}</h1>
+      <h3>Current XP: {xp}</h3>
+      <h3>To Next Level: {calculateNextLevel()}</h3>
       <h2>Kill Count: {killCount}</h2>
       <button onClick={handleLevelUp}>LEVEL UP</button>
       <button onClick={handleRespawn}>RESPAWN</button>
