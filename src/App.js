@@ -15,6 +15,7 @@ function App() {
   const [nextLevel, setNextLevel] = useState(100);
   const [killCount, setKillCount] = useState(0);
   const [bossFight, setBossFight] = useState(false);
+  const [mute, setMute] = useState(false);
   
   let monsters = [
     {"name": "Slime", "hp": 20, "maxHP": 20, "src": Assets.Images.Slime},
@@ -70,13 +71,17 @@ function App() {
       })
       currentMonster = newMonster;
       console.log(critHit + "CRIT");
-    }
-      setNewMonster(previousState => {
-        let newHp = currentMonster.hp - dmg
-        return {...previousState, hp: newHp}
-      })
-      currentMonster = newMonster;
-      console.log(dmg + "DMG");
+    } else{
+        setNewMonster(previousState => {
+          let newHp = currentMonster.hp - dmg
+          return {...previousState, hp: newHp}
+        })
+        currentMonster = newMonster;
+        console.log(dmg + "DMG");
+      }
+      if(mute === false){
+      Assets.SFX.AttackFX.play();
+      }
       // console.log("I am in handle attack and the current monstert is {}", currentMonster);
     }
 
@@ -91,12 +96,14 @@ function App() {
       // console.log("I am in handle respawn and the current monstert is {}", currentMonster);
       setKillCount(killCount + 1);
     }
-      console.log(killCount);
       setXP(xp + (10 * (1 + xpModifier())));
       checkXP();
       if(bossFight){
         setLambentOrb(lambentOrb + 1);
         setBossFight(false);
+      }
+      if(mute === false){
+      Assets.SFX.DeathFX.play();
       }
       // console.log('RESPAWN GET')
     }
@@ -179,6 +186,15 @@ function App() {
       setCritDMG(critDMG + 1);
     }
   }
+
+  const handleMute = () => {
+    if(mute){
+      setMute(false)
+    } else {
+      setMute(true)
+    }
+  }
+
   
 
   return (
@@ -206,6 +222,7 @@ function App() {
         <button onClick={handleAscension}>ASCEND</button>
         <button onClick={handleCritChanceUpgrade}>Crit % UP</button>
         <button onClick={handleCritDMGUpgrade}>Crit DMG UP</button>
+        <button onClick={handleMute}>{mute ? "Unmute" : "Mute"}</button>
       </div>
     </div>
   );

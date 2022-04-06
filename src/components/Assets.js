@@ -13,6 +13,8 @@ import Pepe from "../assets/img/Pepe.PNG";
 import Skull from "../assets/img/skull.png";
 import Lambent from "../assets/img/Lambent.PNG";
 import Radiant from "../assets/img/Radiant.PNG";
+import DeathFX from "../assets/sfx/death.mp3";
+import AttackFX from "../assets/sfx/attack.mp3";
 
 const Images = {
     Slime,
@@ -35,9 +37,16 @@ const Icons = {
 
 }
 
+const SFX = {
+    DeathFX: new Audio(DeathFX),
+    AttackFX: new Audio(AttackFX)
+
+}
+
 const Assets = {
     Images,
-    Icons
+    Icons,
+    SFX
 };
 
 export default Assets;

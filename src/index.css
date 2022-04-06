@@ -55,7 +55,7 @@ code {
   height: 768;
   /* Displays the game window in the correct aspect ratio when console closed. */
   /* margin: 0px 600px 0px 0px; */
-  background-color: rgb(48, 48, 48);
+  background-color: rgb(30, 30, 30);
   padding: 20px;
   border: solid white 5px;
   border-radius: 5px;
@@ -73,6 +73,7 @@ code {
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
+  background-color: rgb(48, 48, 48);
 }
 
 .stat-container{
@@ -81,6 +82,7 @@ code {
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
+  background-color: rgb(48, 48, 48);
 }
 
 .button-container{
@@ -92,6 +94,7 @@ code {
   display: flex;
   flex-wrap: row wrap;
   justify-content: space-evenly; 
+  background-color: rgb(48, 48, 48);
   
 }
 
