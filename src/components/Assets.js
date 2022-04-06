@@ -10,6 +10,9 @@ import Shambler from "../assets/img/Shambler.PNG";
 import Screamer from "../assets/img/Screamer.PNG";
 import Oni from "../assets/img/Oni.PNG";
 import Pepe from "../assets/img/Pepe.PNG";
+import Skull from "../assets/img/skull.png";
+import Lambent from "../assets/img/Lambent.PNG";
+import Radiant from "../assets/img/Radiant.PNG";
 
 const Images = {
     Slime,
@@ -25,8 +28,16 @@ const Images = {
     Pepe
 }
 
+const Icons = {
+    Skull,
+    Lambent,
+    Radiant,
+
+}
+
 const Assets = {
-    Images
+    Images,
+    Icons
 };
 
 export default Assets;

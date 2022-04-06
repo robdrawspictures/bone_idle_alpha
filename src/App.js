@@ -195,9 +195,9 @@ function App() {
           <h2>Lv.{level}</h2>
           <h3>Current XP: {xp}</h3>
           <h3>To Next Level: {calculateNextLevel()}</h3>
-          <h3>Kill Count: {killCount}</h3>
-          <h4>Lambent Orbs: {lambentOrb}</h4>
-          <h4>Radiant Orbs: {radiantOrb}</h4>
+          <div className='img-text-pair'><img src={Assets.Icons.Skull} alt="skull"/><h3>Kill Count: {killCount}</h3></div>
+          <div className='img-text-pair'><img src={Assets.Icons.Lambent} alt="lambent"/><h4>Lambent Orbs: {lambentOrb}</h4></div>
+          <div className='img-text-pair'><img src={Assets.Icons.Radiant} alt="radiant"/><h4>Radiant Orbs: {radiantOrb}</h4></div>
         </div>
       </div>
       <div className='button-container'>
