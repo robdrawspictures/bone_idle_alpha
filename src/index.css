@@ -10,6 +10,11 @@ body {
   font-family: 'Press Start 2P';
 }
 
+header{
+  font-size: 64px;
+  font-family: 'Rubik Glitch';
+}
+
 button {
   font-family: 'Press Start 2p';
 }
@@ -17,6 +22,15 @@ button {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-links {
+  display: inline-block
 }
 
 .game-container{
@@ -28,10 +42,36 @@ code {
   border-radius: 5px;
 }
 
+.game-window{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .enemy-container{
-  width: 300;
-  height: 400;
+  width: 400;
+  height: 500;
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
+}
+
+.stat-container{
+  width: 400;
+  height: 500;
+  padding: 20px;
+  border: solid white 3px;
+  border-radius: 5px;
+}
+
+.button-container{
+  margin: 10px;
+  padding: 10px;
+  border: solid white 3px;
+  border-radius: 5px;
+  width: 200;
+  display: flex;
+  flex-wrap: row wrap;
+  justify-content: space-evenly; 
+  
 }
