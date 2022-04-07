@@ -7,10 +7,12 @@ const Enemy = ({enemy}) => {
     return "Loading..."
   }
 
+  let enemyImg = Assets.Images.enemy.name;
+
 
   return (
     <Fragment>
-    <img src="Assets.Images.{enemy.name}" width="50" alt="enemy"/>
+    <img src={enemyImg} width="50" alt="enemy"/>
     <p>
     {enemy.name}
     </p>

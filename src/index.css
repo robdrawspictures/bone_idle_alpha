@@ -10,10 +10,11 @@ body {
   font-family: 'Press Start 2P';
 }
 
-header{
+.logo{
   flex-grow: 2;
-  font-size: 64px;
+  font-size: 24px;
   font-family: 'Rubik Glitch';
+  font-style: normal;
 }
 
 button {
@@ -29,13 +30,13 @@ code {
     monospace;
 }
 
-.header-container {
+header {
   margin: 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.header-container ul {
+.nav-links {
   flex-grow: 1;
   padding: 20px;
 }
@@ -46,8 +47,9 @@ code {
   display: inline;
 }
 
-.header-links {
-  display: inline-block
+.nav-links li {
+  display: inline-block;
+  padding: 10px;
 }
 
 .game-container{

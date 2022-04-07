@@ -1,6 +1,6 @@
 import React from 'react';
 import Enemy from './Enemy.js';
-import Link from 'react-router-dom/Link';
+import {Link} from 'react-router-dom';
 
 const EnemyList = ({enemies}) => {
 
@@ -19,6 +19,12 @@ const EnemyList = ({enemies}) => {
             </li>
         )
     })
+
+    return(
+        <ul className='enemy-list'>
+            {EnemyNodes}
+        </ul>
+    )
 
 }
 
