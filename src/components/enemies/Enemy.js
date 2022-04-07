@@ -4,15 +4,28 @@ import Assets from "../Assets.js";
 const Enemy = ({enemy}) => {
 
   if (!enemy){
-    return "Loading..."
+    return <p>"Loading..."</p>
   }
 
-  let enemyImg = Assets.Images.enemy.name;
-
+  
+  const getEnemyImg = (enemy) => {
+    let imgSrc;
+    let images = Assets.Images;
+    console.log(images);
+    let enemyName = enemy.name;
+    console.log(enemyName);
+    for(let [name, src] of Object.entries(images)){
+        if(name === enemyName){
+             imgSrc = src;
+        }
+    }
+      console.log(imgSrc);
+      return imgSrc;
+  }
 
   return (
     <Fragment>
-    <img src={enemyImg} width="50" alt="enemy"/>
+    <img src={getEnemyImg(enemy)} width="125" alt="enemy"/>
     <p>
     {enemy.name}
     </p>

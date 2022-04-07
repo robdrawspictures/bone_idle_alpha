@@ -12,7 +12,6 @@ const BestiaryContainer = () => {
         .then(response => response.json())
         .then(data => setEnemies(data))
         console.log("I'M GONNA FEEEEEETCH")
-        console.log(enemies);
     }
 
     useEffect(() => {
@@ -28,17 +27,9 @@ const BestiaryContainer = () => {
 
     return(
             <Fragment>
-            <h1>I'm the enemy list.</h1>
-            <Routes>
-                <Route exact path ="/bestiary/:id" render={(props) => {
-                const id = props.match.params.id;
-                const enemy = findEnemyById(id);
-                return <EnemyDetail enemy={enemy}/>
-                }}/>
-                <Route render={() => {
-                    return <EnemyList enemies={enemies}/>
-                }}/>
-            </Routes>
+            <div className='enemy-list'>
+             <EnemyList enemies={enemies}/> 
+            </div>
             </Fragment>
     )
 }
