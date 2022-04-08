@@ -1,21 +1,43 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
+import Assets from "../Assets";
 import Enemy from "./Enemy";
 
-const EnemyDetail = ({enemy}) => {
-    
-    if(!enemy){
-        return <p>Loading...</p>
+const EnemyDetail = ({enemies}) => {
+
+    const params = useParams();
+
+    if(!enemies){
+        return<p>Loading...</p>
     }
+
+    const findEnemyById = (id) => {
+        return enemies.find((enemy) =>{
+          return enemy.id === parseInt(id);
+        })
+      }
+
+    let enemy = findEnemyById(params.id);
 
     const backURL = "/bestiary";
 
     return(
         <div className="enemy-detail">
-            <Enemy enemy={enemy}/>
-            <h4>Base Hp: {enemy.hp}</h4>
-            <h4>Type: {enemy.type}</h4>
-            <h4>Bio go here.</h4>
+            <h1>{enemy.name}</h1>
+            <div className="enemy-detail-container">
+                <div className="enemy-detail-img">
+                    <img src={Assets.Images[enemy.name]} alt="enemy"/>
+                </div>
+                <div className="enemy-detail-info">
+                    <div className="enemy-detail-stats">
+                        <h4>Base Hp: {enemy.hp}</h4>
+                        <h4>Type: {enemy.type}</h4>
+                    </div>
+                    <div className="enemy-detail-bio">
+                        <h4>Bio go here.</h4>
+                    </div>
+                </div>
+            </div>
             <Link to={backURL}><button>Back to Bestiary</button></Link>
         </div>
     )

@@ -9,6 +9,8 @@ import Tonberry from "../assets/img/Tonberry.PNG";
 import Shambler from "../assets/img/Shambler.PNG";
 import Screamer from "../assets/img/Screamer.PNG";
 import Oni from "../assets/img/Oni.PNG";
+import Hollow from "../assets/img/Hollow.PNG";
+import Emil from "../assets/img/Emil.PNG";
 import Pepe from "../assets/img/Pepe.PNG";
 import Skull from "../assets/img/skull.png";
 import Lambent from "../assets/img/Lambent.PNG";
@@ -27,6 +29,8 @@ const Images = {
     Shambler,
     Screamer,
     Oni,
+    Hollow,
+    Emil,
     Pepe
 }
 
