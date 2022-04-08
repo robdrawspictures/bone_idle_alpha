@@ -30,11 +30,13 @@ const EnemyDetail = ({enemies}) => {
                 </div>
                 <div className="enemy-detail-info">
                     <div className="enemy-detail-stats">
+                        <h4>No.{enemy.id}</h4>
                         <h4>Base Hp: {enemy.hp}</h4>
                         <h4>Type: {enemy.type}</h4>
                     </div>
+                    <hr/>
                     <div className="enemy-detail-bio">
-                        <h4>Bio go here.</h4>
+                        <h4>{enemy.bio}</h4>
                     </div>
                 </div>
             </div>

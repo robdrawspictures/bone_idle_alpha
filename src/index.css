@@ -130,3 +130,41 @@ header {
   border: solid white 3px;
   border-radius: 5px;
 }
+
+.enemy-detail {
+  margin: 10px;
+}
+
+.enemy-detail-container {
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
+  padding: 5px;
+  justify-content: space-evenly;
+}
+
+/* .img-overlay {
+  position: absolute;
+  background-color: rgba(155, 188, 15, 0.4);
+} */
+
+.enemy-detail-img {
+  /* position: absolute;
+  z-index: -1; */
+  flex: 1;
+  padding: 20px;
+  background-image: linear-gradient(rgb(139, 172, 15), rgb(15, 56, 15));
+  border-radius: 5px;
+
+}
+
+.enemy-detail-info {
+  flex: 3;
+  padding: 20px;
+  border: solid white 3px;
+  border-radius: 5px;
+}
+
+.enemy-detail-stats {
+  font-size: 12px;
+}
