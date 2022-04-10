@@ -1,7 +1,6 @@
 import React from "react";
 import {Link, useParams} from 'react-router-dom';
 import Assets from "../Assets";
-import Enemy from "./Enemy";
 
 const EnemyDetail = ({enemies}) => {
 

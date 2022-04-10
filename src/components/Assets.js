@@ -17,6 +17,7 @@ import Lambent from "../assets/img/Lambent.PNG";
 import Radiant from "../assets/img/Radiant.PNG";
 import DeathFX from "../assets/sfx/death.mp3";
 import AttackFX from "../assets/sfx/attack.mp3";
+import Music from "../assets/mus/BG.mp3";
 
 const Images = {
     Slime,
@@ -47,10 +48,15 @@ const SFX = {
 
 }
 
+const BGM = {
+    BGM: new Audio(Music)
+}
+
 const Assets = {
     Images,
     Icons,
-    SFX
+    SFX,
+    BGM
 };
 
 export default Assets;

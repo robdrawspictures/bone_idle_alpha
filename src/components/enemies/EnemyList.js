@@ -11,7 +11,7 @@ const EnemyList = ({enemies}) => {
     const EnemyNodes = enemies.map((enemy, index) => {
         const enemyURL = "/bestiary/" + enemy.id;
         return (
-                <div className='enemy-card'>
+                <div className='enemy-card' key={index}>
                     <Enemy enemy={enemy}/>
                     <Link to={enemyURL}><button type="button">View</button></Link>
                 </div>
