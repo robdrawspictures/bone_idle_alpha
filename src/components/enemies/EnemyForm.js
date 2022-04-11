@@ -28,12 +28,10 @@ const EnemyForm = ({enemy, onCreate}) => {
         let copiedEnemy = {...stateEnemy};
         copiedEnemy[propertyName] = e.target.value;
         setStateEnemy(copiedEnemy);
-        console.log(stateEnemy);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(stateEnemy);
         onCreate(stateEnemy);
     }
 

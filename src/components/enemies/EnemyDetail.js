@@ -7,7 +7,7 @@ const EnemyDetail = ({enemies, onEdit}) => {
     const params = useParams();
     const [edit, setEdit] = useState(false);
     const [bio, setBio] = useState({
-        bio: ""
+        "bio": ""
     })
 
     const findEnemyById = (id) => {
@@ -17,16 +17,20 @@ const EnemyDetail = ({enemies, onEdit}) => {
       }
 
     let enemy = findEnemyById(params.id);
+    
 
     if(!enemy){
         return<p>Loading...</p>
     }
 
+    
+
     const backURL = "/bestiary";
 
     const handleEdit = (e) => {
         e.preventDefault();
-        onEdit(bio, enemy);
+        enemy["bio"] = bio.bio; 
+        onEdit(enemy);
         setEdit();
     }
 

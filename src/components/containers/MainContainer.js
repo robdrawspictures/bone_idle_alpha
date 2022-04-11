@@ -31,9 +31,10 @@ const MainContainer = () => {
         .then(() => {window.location = "/bestiary"})
       }
 
-    const handleEdit = (bio, enemy) => {
+    const handleEdit = (enemy) => {
+        console.log(enemy.bio);
         const request = new Request();
-        request.patch("http://localhost:8080/api/enemies/" + enemy.id, bio)
+        request.patch("http://localhost:8080/api/enemies/" + enemy.id, enemy)
         .then(() => {
           window.location = "/bestiary/" + enemy.id;
         })
