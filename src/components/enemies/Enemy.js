@@ -22,7 +22,7 @@ const Enemy = ({enemy}) => {
 
   return (
     <Fragment>
-    <img src={getEnemyImg(enemy)} width="125" alt="enemy"/>
+    <img src={getEnemyImg(enemy) ? getEnemyImg(enemy) : Assets.Images.BitCorrupt} width="125" alt="enemy"/>
     <p>
     {enemy.name}
     </p>

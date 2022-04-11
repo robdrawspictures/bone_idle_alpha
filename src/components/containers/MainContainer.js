@@ -5,6 +5,7 @@ import GameContainer from './GameContainer.js';
 import ForumContainer from './ForumContainer.js';
 import EnemyDetail from '../enemies/EnemyDetail.js';
 import EnemyList from '../enemies/EnemyList.js';
+import NotFound from '../NotFound.js';
 
 
 const MainContainer = () => {
@@ -32,6 +33,7 @@ const MainContainer = () => {
         <Route path="/bestiary/*" element={<EnemyList enemies={enemies}/>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
         <Route path="/user"/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
 
 

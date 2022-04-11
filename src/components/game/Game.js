@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Assets from '../Assets';
 import Enemy from './Enemy';
-// import './App.css';
 
 function Game({enemies}) {
 
@@ -51,6 +50,15 @@ function Game({enemies}) {
         return monsterFilter.length;
     }
 
+    const getBossCount = () => {
+        return bossFilter.length;
+    }
+
+    const bossRandomiser = () => {
+        let ceiling = getBossCount();
+        return Math.floor(Math.random() * ceiling);
+    }
+
     const monsterRandomiser = () => {
         let ceiling = getMonsterCount();
         return Math.floor(Math.random() * ceiling);
@@ -63,17 +71,14 @@ function Game({enemies}) {
     let currentMonster = monsterFilter[monsterRandomiser()];
 
     useEffect(() => {
-        console.log(newMonster);
         setMonsterHP(currentMonster);
         checkHP(currentMonster);
-        console.log(monsterFilter);
     }, [currentMonster])
 
     const [newMonster, setNewMonster] = useState({
         name: currentMonster.name,
         hp: currentMonster.hp,
-        maxHP: currentMonster.hp,
-        src: Assets.Images[currentMonster.name]
+        maxHP: currentMonster.maxHP
     });
 
     const handleAttack = () => {
@@ -97,18 +102,17 @@ function Game({enemies}) {
         if(mute === false){
         Assets.SFX.AttackFX.play();
         }
-        // console.log("I am in handle attack and the current monstert is {}", currentMonster);
-        }
+
+    }
 
     const handleRespawn = () => {
         if(killCount === 5){
-            setNewMonster(bossFilter[monsterRandomiser()]);
+            setNewMonster(bossFilter[bossRandomiser()]);
             setKillCount(0);
             setBossFight(true);
         } else {
         currentMonster = monsterFilter[monsterRandomiser()];
         setNewMonster(currentMonster);
-        // console.log("I am in handle respawn and the current monstert is {}", currentMonster);
         setKillCount(killCount + 1);
         }
         setXP(xp + (10 * (1 + xpModifier())));
@@ -120,8 +124,7 @@ function Game({enemies}) {
         if(mute === false){
         Assets.SFX.DeathFX.play();
         }
-        // console.log('RESPAWN GET')
-        }
+    }
 
     const checkXP = () => {
         if(xp >= nextLevel){
@@ -164,7 +167,7 @@ function Game({enemies}) {
     }
 
     const getMonsterSRC = () => {
-        return newMonster.src
+        return Assets.Images[newMonster.name]
     }
 
     const calculateNextLevel = () => {
@@ -226,10 +229,7 @@ function Game({enemies}) {
         <div className="game-container">
         <div className='game-window'>
             <div className="enemy-container">
-            <Enemy name={newMonster.name} src={getMonsterSRC()} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
-            {/* <p>{monsters[0].name}</p>
-            <img src={monsters[0].src} alt="monstarrr"/>
-            <p>HP: {monsters[0].hp}/{monsters[0].maxHP}</p> */}
+            <Enemy name={getMonsterName()} src={getMonsterSRC()} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
             </div>
             <div className='stat-container'>
             <h1>---Stats---</h1>

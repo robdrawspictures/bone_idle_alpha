@@ -11,6 +11,9 @@ import Screamer from "../assets/img/Screamer.PNG";
 import Oni from "../assets/img/Oni.PNG";
 import Hollow from "../assets/img/Hollow.PNG";
 import Emil from "../assets/img/Emil.PNG";
+import CorruptStatic from "../assets/img/CorruptStatic.jpg"
+import BitCorrupt from "../assets/img/BitCorrupt.gif"
+import Corrupt from "../assets/img/Corrupt.gif"
 import Pepe from "../assets/img/Pepe.PNG";
 import Skull from "../assets/img/skull.png";
 import Lambent from "../assets/img/Lambent.PNG";
@@ -32,6 +35,9 @@ const Images = {
     Oni,
     Hollow,
     Emil,
+    CorruptStatic,
+    BitCorrupt,
+    Corrupt,
     Pepe
 }
 
