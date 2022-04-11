@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import {Link, useParams} from 'react-router-dom';
 import Assets from "../Assets";
 
-const EnemyDetail = ({enemies}) => {
+const EnemyDetail = ({enemies, onEdit}) => {
 
     const params = useParams();
+    const [edit, setEdit] = useState(false);
+    const [bio, setBio] = useState({
+        bio: ""
+    })
 
     if(!enemies){
         return<p>Loading...</p>
@@ -20,12 +24,26 @@ const EnemyDetail = ({enemies}) => {
 
     const backURL = "/bestiary";
 
+    const handleEdit = (e) => {
+        e.preventDefault();
+        onEdit(bio, enemy);
+        setEdit();
+    }
+
+    const handleChange = (e) => {
+        let propertyName = e.target.name;
+        let updatedBio = {...bio};
+        updatedBio[propertyName] = e.target.value;
+        setBio(updatedBio);
+        console.log(updatedBio);
+    }
+
     return(
         <div className="enemy-detail">
             <h1>{enemy.name}</h1>
             <div className="enemy-detail-container">
                 <div className="enemy-detail-img">
-                    <img src={Assets.Images[enemy.name]} alt="enemy"/>
+                    <img src={Assets.Images[enemy.name] ? Assets.Images[enemy.name] : Assets.Images.Corrupt} alt="enemy"/>
                 </div>
                 <div className="enemy-detail-info">
                     <div className="enemy-detail-stats">
@@ -35,7 +53,8 @@ const EnemyDetail = ({enemies}) => {
                     </div>
                     <hr/>
                     <div className="enemy-detail-bio">
-                        <h4>{enemy.bio}</h4>
+                        {edit ? <textarea value={bio.bio} rows="4" name="bio" columns="9" onChange={handleChange}/> : <h4>{enemy.bio}</h4>}
+                        {edit ? <button onClick={handleEdit}>Save</button> : <button onClick={setEdit}>Edit Bio</button>}
                     </div>
                 </div>
             </div>

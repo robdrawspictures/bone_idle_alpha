@@ -31,6 +31,14 @@ const MainContainer = () => {
         .then(() => {window.location = "/bestiary"})
       }
 
+    const handleEdit = (bio, enemy) => {
+        const request = new Request();
+        request.patch("http://localhost:8080/api/enemies/" + enemy.id, bio)
+        .then(() => {
+          window.location = "/bestiary/" + enemy.id;
+        })
+      }
+
     return (
       <Router>
       <Fragment>
@@ -38,7 +46,7 @@ const MainContainer = () => {
       <Routes>
         <Route path="/" element={<GameContainer enemies={enemies}/>}/>
         <Route path="/how-to-play"/>
-        <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies}/>}/>
+        <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies} onEdit={handleEdit}/>}/>
         <Route path="/bestiary/*" element={<><EnemyList enemies={enemies}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
         <Route path="/user"/>
