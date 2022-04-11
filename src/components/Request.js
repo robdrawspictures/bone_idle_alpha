@@ -16,6 +16,14 @@ class Request {
         })
     }
 
+    delete(url, payload){
+        return fetch(url, {
+            method:"DELETE",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify(payload)
+        })
+    }
+
 
 }
 

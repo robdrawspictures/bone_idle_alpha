@@ -38,6 +38,12 @@ const MainContainer = () => {
           window.location = "/bestiary/" + enemy.id;
         })
       }
+    
+    const handleDelete = (enemy) => {
+        const request = new Request();
+        request.delete("http://localhost:8080/api/enemies/" + enemy.id)
+        .then(() => {window.location = "/bestiary"})
+    }
 
     return (
       <Router>
@@ -47,7 +53,7 @@ const MainContainer = () => {
         <Route path="/" element={<GameContainer enemies={enemies}/>}/>
         <Route path="/how-to-play"/>
         <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies} onEdit={handleEdit}/>}/>
-        <Route path="/bestiary/*" element={<><EnemyList enemies={enemies}/><EnemyForm onCreate={handlePost}/></>}/>
+        <Route path="/bestiary/*" element={<><EnemyList enemies={enemies} onDelete={handleDelete}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
         <Route path="/user"/>
         <Route path="*" element={<NotFound/>}/>

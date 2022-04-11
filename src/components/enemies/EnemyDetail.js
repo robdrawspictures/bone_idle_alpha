@@ -10,10 +10,6 @@ const EnemyDetail = ({enemies, onEdit}) => {
         bio: ""
     })
 
-    if(!enemies){
-        return<p>Loading...</p>
-    }
-
     const findEnemyById = (id) => {
         return enemies.find((enemy) =>{
           return enemy.id === parseInt(id);
@@ -21,6 +17,10 @@ const EnemyDetail = ({enemies, onEdit}) => {
       }
 
     let enemy = findEnemyById(params.id);
+
+    if(!enemy){
+        return<p>Loading...</p>
+    }
 
     const backURL = "/bestiary";
 
@@ -35,7 +35,6 @@ const EnemyDetail = ({enemies, onEdit}) => {
         let updatedBio = {...bio};
         updatedBio[propertyName] = e.target.value;
         setBio(updatedBio);
-        console.log(updatedBio);
     }
 
     return(
@@ -54,7 +53,7 @@ const EnemyDetail = ({enemies, onEdit}) => {
                     <hr/>
                     <div className="enemy-detail-bio">
                         {edit ? <textarea value={bio.bio} rows="4" name="bio" columns="9" onChange={handleChange}/> : <h4>{enemy.bio}</h4>}
-                        {edit ? <button onClick={handleEdit}>Save</button> : <button onClick={setEdit}>Edit Bio</button>}
+                        {edit ? <button type="submit" onClick={handleEdit}>Save</button> : <button onClick={setEdit}>Edit Bio</button>}
                     </div>
                 </div>
             </div>

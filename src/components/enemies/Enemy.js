@@ -1,10 +1,15 @@
 import React, {Fragment} from 'react';
 import Assets from "../Assets.js";
 
-const Enemy = ({enemy}) => {
+const Enemy = ({enemy, onDelete}) => {
 
   if (!enemy){
     return <p>"Loading..."</p>
+  }
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    onDelete(enemy);
   }
 
   
@@ -26,6 +31,7 @@ const Enemy = ({enemy}) => {
     <p>
     {enemy.name}
     </p>
+    <button type="button" onClick={handleDelete}>Delete</button>
     </Fragment>
   )
 }
