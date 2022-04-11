@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import Assets from "../Assets.js";
+import { Link } from 'react-router-dom';
 
 const Enemy = ({enemy, onDelete}) => {
 
@@ -25,12 +26,15 @@ const Enemy = ({enemy, onDelete}) => {
       return imgSrc;
   }
 
+  const enemyURL = "/bestiary/" + enemy.id;
+
   return (
     <Fragment>
     <img src={getEnemyImg(enemy) ? getEnemyImg(enemy) : Assets.Images.BitCorrupt} width="125" alt="enemy"/>
     <p>
     {enemy.name}
     </p>
+    <Link to={enemyURL}><button type="button">View</button></Link>
     <button type="button" onClick={handleDelete}>Delete</button>
     </Fragment>
   )

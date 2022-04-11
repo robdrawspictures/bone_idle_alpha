@@ -1,6 +1,5 @@
 import React from 'react';
 import Enemy from './Enemy.js';
-import {Link} from 'react-router-dom';
 
 const EnemyList = ({enemies, onDelete}) => {
 
@@ -9,11 +8,9 @@ const EnemyList = ({enemies, onDelete}) => {
     }
 
     const EnemyNodes = enemies.map((enemy, index) => {
-        const enemyURL = "/bestiary/" + enemy.id;
         return (
                 <div className='enemy-card' key={index}>
                     <Enemy enemy={enemy} onDelete={onDelete}/>
-                    <Link to={enemyURL}><button type="button">View</button></Link>
                 </div>
         )
     })

@@ -12,9 +12,14 @@ import Oni from "../assets/img/Oni.PNG";
 import Hollow from "../assets/img/Hollow.PNG";
 import Emil from "../assets/img/Emil.PNG";
 import CorruptStatic from "../assets/img/CorruptStatic.jpg"
-import BitCorrupt from "../assets/img/BitCorrupt.gif"
-import Corrupt from "../assets/img/Corrupt.gif"
+import BitCorrupt from "../assets/img/BitCorrupt.gif";
+import Corrupt from "../assets/img/Corrupt.gif";
+import Sneed from "../assets/img/CorruptSneed.gif";
 import Pepe from "../assets/img/Pepe.PNG";
+
+//BACKGROUND IMAGE
+// CREDIT: https://franky_paleone.artstation.com/projects/lVwBEz
+import DoomWall from "../assets/img/DoomWallBG.png"
 
 //ICONS
 import Skull from "../assets/img/skull.png";
@@ -44,7 +49,12 @@ const Images = {
     CorruptStatic,
     BitCorrupt,
     Corrupt,
+    Sneed,
     Pepe
+}
+
+const Background = {
+    DoomWall
 }
 
 const Icons = {
@@ -66,6 +76,7 @@ const BGM = {
 
 const Assets = {
     Images,
+    Background,
     Icons,
     SFX,
     BGM

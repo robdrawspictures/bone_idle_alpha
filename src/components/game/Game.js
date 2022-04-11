@@ -229,7 +229,7 @@ function Game({enemies}) {
         <div className="game-container">
         <div className='game-window'>
             <div className="enemy-container">
-            <Enemy name={getMonsterName()} src={getMonsterSRC()} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
+            <Enemy name={getMonsterName()} src={getMonsterSRC() ? getMonsterSRC() : Assets.Images.Corrupt} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
             </div>
             <div className='stat-container'>
             <h1>---Stats---</h1>

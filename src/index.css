@@ -8,6 +8,7 @@ body {
   background-color: black;
   color: white;
   font-family: 'Press Start 2P';
+  background-image: url("./assets/img/DoomWallBG.png");
 }
 
 .logo{
@@ -129,6 +130,7 @@ header {
   padding: 5px;
   border: solid white 3px;
   border-radius: 5px;
+  background-color: black;
 }
 
 .enemy-detail {
