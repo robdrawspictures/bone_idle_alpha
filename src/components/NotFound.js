@@ -4,8 +4,8 @@ import Assets from "./Assets";
 const NotFound = () => {
 
     return (
-        <div className="404-container">
-            <img src={Assets.Images.Corrupt} alt="404"/>
+        <div className="not-found">
+            <img src={Assets.Images.Corrupt} width="750" alt="404"/>
             <h1>You shouldn't be here...</h1>
         </div>
     )

@@ -168,3 +168,16 @@ header {
 .enemy-detail-stats {
   font-size: 12px;
 }
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.enemy-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

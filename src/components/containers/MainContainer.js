@@ -6,6 +6,8 @@ import ForumContainer from './ForumContainer.js';
 import EnemyDetail from '../enemies/EnemyDetail.js';
 import EnemyList from '../enemies/EnemyList.js';
 import NotFound from '../NotFound.js';
+import EnemyForm from '../enemies/EnemyForm.js';
+import Request from '../Request.js';
 
 
 const MainContainer = () => {
@@ -22,6 +24,13 @@ const MainContainer = () => {
         fetchEnemies();
     }, [])
 
+    const handlePost = (enemy) => {
+        const request = new Request();
+        const url = "http://localhost:8080/api/enemies"
+        request.post(url, enemy)
+        .then(() => {window.location = "/bestiary"})
+      }
+
     return (
       <Router>
       <Fragment>
@@ -30,7 +39,7 @@ const MainContainer = () => {
         <Route path="/" element={<GameContainer enemies={enemies}/>}/>
         <Route path="/how-to-play"/>
         <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies}/>}/>
-        <Route path="/bestiary/*" element={<EnemyList enemies={enemies}/>}/>
+        <Route path="/bestiary/*" element={<><EnemyList enemies={enemies}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
         <Route path="/user"/>
         <Route path="*" element={<NotFound/>}/>

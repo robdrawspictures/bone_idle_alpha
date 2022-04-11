@@ -15,11 +15,17 @@ import CorruptStatic from "../assets/img/CorruptStatic.jpg"
 import BitCorrupt from "../assets/img/BitCorrupt.gif"
 import Corrupt from "../assets/img/Corrupt.gif"
 import Pepe from "../assets/img/Pepe.PNG";
+
+//ICONS
 import Skull from "../assets/img/skull.png";
 import Lambent from "../assets/img/Lambent.PNG";
 import Radiant from "../assets/img/Radiant.PNG";
+
+//SFX
 import DeathFX from "../assets/sfx/death.mp3";
 import AttackFX from "../assets/sfx/attack.mp3";
+
+//BGM
 import Music from "../assets/mus/BG.mp3";
 
 const Images = {
