@@ -9,11 +9,15 @@ import NotFound from '../NotFound.js';
 import EnemyForm from '../enemies/EnemyForm.js';
 import Request from '../Request.js';
 import HowToPlay from '../HowToPlay.js';
+import UserList from '../forum/UserList.js';
+import UserDetail from '../forum/UserDetail.js';
+import UserForm from '../forum/UserForm';
 
 
 const MainContainer = () => {
 
     const [enemies, setEnemies] = useState([])
+    const [users, setUsers] = useState([])
 
     const fetchEnemies =() => {
         fetch("http://localhost:8080/api/enemies")
@@ -21,8 +25,15 @@ const MainContainer = () => {
         .then(data => setEnemies(data))
     }
 
+    const fetchUsers = () => {
+        fetch("http://localhost:8080/api/users")
+        .then(response => response.json())
+        .then(data => setUsers(data))
+    }
+
     useEffect(() => {
         fetchEnemies();
+        fetchUsers();
     }, [])
 
     const handlePost = (enemy) => {
@@ -31,6 +42,13 @@ const MainContainer = () => {
         request.post(url, enemy)
         .then(() => {window.location = "/bestiary"})
       }
+
+    const handleCreateAccount = (user) => {
+        const request = new Request();
+        const url = "http://localhost:8080/api/users"
+        request.post(url, user)
+        .then(() => {window.location = "/users"})
+    }
 
     const handleEdit = (enemy) => {
         console.log(enemy.bio);
@@ -57,7 +75,9 @@ const MainContainer = () => {
         <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies} onEdit={handleEdit}/>}/>
         <Route path="/bestiary/*" element={<><EnemyList enemies={enemies} onDelete={handleDelete}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
-        <Route path="/user"/>
+        <Route path="/users" element={<UserList users={users}/>}/>
+        <Route path="/users/:id" element={<UserDetail users={users}/>}/>
+        <Route path="/create" element={<UserForm onCreateAccount={handleCreateAccount}/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
 

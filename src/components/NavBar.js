@@ -20,7 +20,13 @@ const NavBar = (props) => {
                     <Link to="/bestiary"><button>Bestiary</button></Link>
                 </li>
                 <li className="navLink">
+                    <Link to="/users"><button>Users</button></Link>
+                </li>
+                <li className="navLink">
                     <Link to="/forum">Forum</Link>
+                </li>
+                <li className="navLink">
+                    <Link to="/create"><button>Create Account</button></Link>
                 </li>
             </ul>
         </div>

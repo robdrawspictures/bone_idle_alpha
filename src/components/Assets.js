@@ -17,6 +17,11 @@ import Corrupt from "../assets/img/Corrupt.gif";
 import Sneed from "../assets/img/CorruptSneed.gif";
 import Pepe from "../assets/img/Pepe.PNG";
 
+//AVATARS
+import shinji_ikari from "../assets/img/shinji_ikari.png"
+import gendo_ikari from "../assets/img/gendo_ikari.png"
+import asuka_langley from "../assets/img/asuka_langley.png"
+
 //BACKGROUND IMAGE
 // CREDIT: https://franky_paleone.artstation.com/projects/lVwBEz
 import DoomWall from "../assets/img/DoomWallBG.png"
@@ -55,6 +60,12 @@ const Images = {
     Pepe
 }
 
+const Avatars = {
+    shinji_ikari,
+    gendo_ikari,
+    asuka_langley
+}
+
 const Background = {
     DoomWall
 }
@@ -80,6 +91,7 @@ const BGM = {
 
 const Assets = {
     Images,
+    Avatars,
     Background,
     Icons,
     SFX,
