@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import NavBar from '../NavBar.js';
 import GameContainer from './GameContainer.js';
 import ForumContainer from './ForumContainer.js';
+import Thread from '../forum/Thread.js';
 import EnemyDetail from '../enemies/EnemyDetail.js';
 import EnemyList from '../enemies/EnemyList.js';
 import NotFound from '../NotFound.js';
@@ -12,12 +13,15 @@ import HowToPlay from '../HowToPlay.js';
 import UserList from '../forum/UserList.js';
 import UserDetail from '../forum/UserDetail.js';
 import UserForm from '../forum/UserForm';
+import ViewThread from '../forum/ViewThread.js';
 
 
 const MainContainer = () => {
 
     const [enemies, setEnemies] = useState([])
     const [users, setUsers] = useState([])
+    const [threads, setThreads] = useState([])
+    const [posts, setPosts] = useState([])
 
     const fetchEnemies =() => {
         fetch("http://localhost:8080/api/enemies")
@@ -31,9 +35,25 @@ const MainContainer = () => {
         .then(data => setUsers(data))
     }
 
+    const fetchThreads = () => {
+        fetch("http://localhost:8080/api/threads")
+        .then(response => response.json())
+        .then(data => setThreads(data))
+        .then(console.log(threads))
+    }
+
+    const fetchPosts = () => {
+        fetch("http://localhost:8080/api/posts")
+        .then(response => response.json())
+        .then(data => setPosts(data))
+        .then(console.log(posts))
+    }
+
     useEffect(() => {
         fetchEnemies();
         fetchUsers();
+        fetchPosts();
+        fetchThreads();
     }, [])
 
     const handlePost = (enemy) => {
@@ -84,6 +104,8 @@ const MainContainer = () => {
         <Route path="/users" element={<UserList users={users} onDelete={handleDeleteAccount}/>}/>
         <Route path="/users/:id" element={<UserDetail users={users}/>}/>
         <Route path="/create" element={<UserForm onCreateAccount={handleCreateAccount}/>}/>
+        <Route path="/forum" element={<ForumContainer threads={threads} posts={posts} users={users}/>}/>
+        <Route path="/forum/:id" element={<ViewThread threads={threads} posts={posts}/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
 
