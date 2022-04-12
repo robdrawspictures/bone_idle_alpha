@@ -11,16 +11,16 @@ const NavBar = (props) => {
         <div className='nav-links'>
             <ul>
                 <li className="navLink">
-                <a href="/">Game</a>
+                    <Link to="/"><button>Game</button></Link>
                 </li>
                 <li>
-                    <Link to="/FAQ"><button>How To Play</button></Link>
+                    <Link to="/faq"><button>How To Play</button></Link>
                 </li>
                 <li className="navLink">
-                <a href="/bestiary">Bestiary</a>
+                    <Link to="/bestiary"><button>Bestiary</button></Link>
                 </li>
                 <li className="navLink">
-                    <a href="/forum">Forum</a>
+                    <Link to="/forum">Forum</Link>
                 </li>
             </ul>
         </div>

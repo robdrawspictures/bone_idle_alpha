@@ -23,6 +23,7 @@ import DoomWall from "../assets/img/DoomWallBG.png"
 
 //ICONS
 import Skull from "../assets/img/skull.png";
+import RedSkull from "../assets/img/skullRed.png";
 import Lambent from "../assets/img/Lambent.PNG";
 import Radiant from "../assets/img/Radiant.PNG";
 
@@ -32,6 +33,7 @@ import AttackFX from "../assets/sfx/attack.mp3";
 
 //BGM
 import Music from "../assets/mus/BG.mp3";
+import Error from "../assets/mus/SCD.mp3";
 
 const Images = {
     Slime,
@@ -59,6 +61,7 @@ const Background = {
 
 const Icons = {
     Skull,
+    RedSkull,
     Lambent,
     Radiant,
 
@@ -71,7 +74,8 @@ const SFX = {
 }
 
 const BGM = {
-    BGM: new Audio(Music)
+    BGM: new Audio(Music),
+    Err: new Audio(Error)
 }
 
 const Assets = {

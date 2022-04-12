@@ -15,36 +15,24 @@ function Game({enemies}) {
     const [killCount, setKillCount] = useState(0);
     const [bossFight, setBossFight] = useState(false);
     const [mute, setMute] = useState(false);
-    const [music, setMusic] = useState(true);
+    const [music, setMusic] = useState(false);
+
+    //ACHIEVEMENTS
+    const [totalKills, setTotalKills] = useState(0);
+    const [killsTrophy, setKillsTrophy] = useState(false);
+    const [ascensionCount, setAscensionCount] = useState(0);
+    const [ascensionTrophy, setAscensionTrophy] = useState(false);
+    const [ascensionTotalTrophy, setAscensionTotalTrophy] = useState(false);
 
     useEffect(() => {
         if(music){
             Assets.BGM.BGM.play();
         }
     }, [music])
-    
-    // let monsters = [
-    //     {"name": "Slime", "hp": 20, "maxHP": 20, "src": Assets.Images.Slime},
-    //     {"name": "Mushaboom", "hp": 80, "maxHP": 80, "src": Assets.Images.Mushaboom},
-    //     {"name": "Skeleton", "hp": 20, "maxHP": 20, "src": Assets.Images.Skeleton},
-    //     {"name": "Mimic", "hp": 90, "maxHP": 90, "src": Assets.Images.Mimic},
-    //     {"name": "Unborn", "hp": 40, "maxHP": 40, "src": Assets.Images.Unborn},
-    //     {"name": "Oni", "hp": 60, "maxHP": 60, "src": Assets.Images.Oni},
-    //     {"name": "Doll", "hp": 40, "maxHP": 40, "src": Assets.Images.Doll},
-    //     {"name": "Shambler", "hp": 80, "maxHP": 80, "src": Assets.Images.Shambler},
-    //     {"name": "Screamer", "hp": 70, "maxHP": 70, "src": Assets.Images.Screamer},
-    //     {"name": "Tonberry", "hp": 90, "maxHP": 90, "src": Assets.Images.Tonberry}
-    // ]
-
-
 
     const monsterFilter = enemies.filter(enemy => enemy.type === "MONSTER");
 
     const bossFilter = enemies.filter(enemy => enemy.type === "BOSS");
-
-    // let bosses = [
-    //     {"name": "Rare Pepe", "hp": 100, "maxHP": 100, "src": Assets.Images.Pepe}
-    // ]
 
     const getMonsterCount = () => {
         return monsterFilter.length;
@@ -71,9 +59,8 @@ function Game({enemies}) {
     let currentMonster = monsterFilter[monsterRandomiser()];
 
     useEffect(() => {
-        setMonsterHP(currentMonster);
-        checkHP(currentMonster);
-    }, [currentMonster])
+        setDMG(10 * (level + radiantOrb))
+    }, [level, radiantOrb])
 
     const [newMonster, setNewMonster] = useState({
         name: currentMonster.name,
@@ -109,11 +96,13 @@ function Game({enemies}) {
         if(killCount === 5){
             setNewMonster(bossFilter[bossRandomiser()]);
             setKillCount(0);
+            setTotalKills(totalKills + 1);
             setBossFight(true);
         } else {
         currentMonster = monsterFilter[monsterRandomiser()];
         setNewMonster(currentMonster);
         setKillCount(killCount + 1);
+        setTotalKills(totalKills + 1);
         }
         setXP(xp + (10 * (1 + xpModifier())));
         checkXP();
@@ -124,6 +113,7 @@ function Game({enemies}) {
         if(mute === false){
         Assets.SFX.DeathFX.play();
         }
+        checkTotalKills();
     }
 
     const checkXP = () => {
@@ -140,7 +130,7 @@ function Game({enemies}) {
 
     const handleLevelUp = () => {
         setLevel(level + 1);
-        setDMG();
+        setDMG(10 * (level + radiantOrb));
         // Rather than reset the XP counter to zero, carry over any excess
         let remainingXP = xp - nextLevel;
         setXP(remainingXP);
@@ -151,7 +141,7 @@ function Game({enemies}) {
     }
 
     const setMonsterHP = (currentMonster) => {
-        currentMonster.hp -= 10;
+        currentMonster.hp -= dmg;
     }
 
     const getMonsterHP = () => {
@@ -191,6 +181,8 @@ function Game({enemies}) {
         let newRadiantOrb = radiantOrb + lambentOrb;
         setRadiantOrb(newRadiantOrb);
         setLambentOrb(0);
+        setAscensionCount(ascensionCount + 1);
+        checkAscension();
     }
 
     const handleCritChanceUpgrade = () => {
@@ -223,6 +215,22 @@ function Game({enemies}) {
         }
     }
 
+    const checkTotalKills = () => {
+        if(totalKills >= 10){
+            setKillsTrophy(true);
+        }
+    }
+
+    const checkAscension = () => {
+        if(ascensionCount >= 1){
+            setAscensionTrophy(true);
+        }
+        if (ascensionCount >= 10){
+            setAscensionTotalTrophy(true);
+        }
+        console.log(ascensionCount);
+    }
+
     
 
     return (
@@ -232,13 +240,22 @@ function Game({enemies}) {
             <Enemy name={getMonsterName()} src={getMonsterSRC() ? getMonsterSRC() : Assets.Images.Corrupt} handleAttack={handleAttack} handleRespawn={handleRespawn} hp={getMonsterHP()} maxHP={getMonsterMaxHP()}/>
             </div>
             <div className='stat-container'>
-            <h1>---Stats---</h1>
-            <h2>Lv.{level}</h2>
-            <h3>Current XP: {xp}</h3>
-            <h3>To Next Level: {calculateNextLevel()}</h3>
-            <div className='img-text-pair'><img src={Assets.Icons.Skull} alt="skull"/><h3>Kill Count: {killCount}</h3></div>
-            <div className='img-text-pair'><img src={Assets.Icons.Lambent} alt="lambent"/><h4>Lambent Orbs: {lambentOrb}</h4></div>
-            <div className='img-text-pair'><img src={Assets.Icons.Radiant} alt="radiant"/><h4>Radiant Orbs: {radiantOrb}</h4></div>
+                <h3>---Stats---</h3>
+                <h3>Lv.{level}</h3>
+                <h4>Current XP: {xp}</h4>
+                <h4>To Next Level: {calculateNextLevel()}</h4>
+                <div className='img-text-pair'><img src={Assets.Icons.Skull} alt="skull"/><h4>Kill Count: {killCount}</h4></div>
+                <div className='img-text-pair'><img src={Assets.Icons.RedSkull} alt="red-skull"/><h4>Total Kills: {totalKills}</h4></div>
+                <div className='img-text-pair'><img src={Assets.Icons.Lambent} alt="lambent"/><h4>Lambent Orbs: {lambentOrb}</h4></div>
+                <div className='img-text-pair'><img src={Assets.Icons.Radiant} alt="radiant"/><h4>Radiant Orbs: {radiantOrb}</h4></div>
+            </div>
+            <div className="trophy-container">
+                <h3>--Trophies--</h3>
+                <div className='trophies'>
+                    <div title="Fledgling Killer" className='trophy'>{killsTrophy ? "✅" : "❌"}</div>
+                    <div title="First Ascension" className='trophy'>{ascensionTrophy ? "✅" : "❌"}</div>
+                    <div title="Adept Ascender" className='trophy'>{ascensionTotalTrophy ? "✅" : "❌"}</div>
+                </div>
             </div>
         </div>
         <div className='button-container'>

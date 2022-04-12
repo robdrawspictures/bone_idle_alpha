@@ -13,9 +13,9 @@ function Enemy(props){
 
     return (
         <div className="enemy">
-            <p>{props.name}</p>
+            <h2>{props.name}</h2>
             <img className="enemy" src={props.src} alt="monster" onClick={() => handleAttack()}/>
-            <p>HP: {props.hp}/{props.maxHP}</p>
+            <h3>HP: {props.hp}/{props.maxHP}</h3>
         </div>
     )
 

@@ -8,6 +8,7 @@ import EnemyList from '../enemies/EnemyList.js';
 import NotFound from '../NotFound.js';
 import EnemyForm from '../enemies/EnemyForm.js';
 import Request from '../Request.js';
+import HowToPlay from '../HowToPlay.js';
 
 
 const MainContainer = () => {
@@ -52,7 +53,7 @@ const MainContainer = () => {
       <NavBar/>
       <Routes>
         <Route path="/" element={<GameContainer enemies={enemies}/>}/>
-        <Route path="/how-to-play"/>
+        <Route path="/faq" element={<HowToPlay/>}/>
         <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies} onEdit={handleEdit}/>}/>
         <Route path="/bestiary/*" element={<><EnemyList enemies={enemies} onDelete={handleDelete}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
