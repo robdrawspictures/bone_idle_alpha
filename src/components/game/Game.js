@@ -242,13 +242,13 @@ function Game({enemies}) {
             </div>
         </div>
         <div className='button-container'>
-            <button onClick={handleLevelUp}>LEVEL UP</button>
-            <button onClick={handleRespawn}>RESPAWN</button>
-            <button onClick={handleAscension}>ASCEND</button>
-            <button onClick={handleCritChanceUpgrade}>Crit % UP</button>
-            <button onClick={handleCritDMGUpgrade}>Crit DMG UP</button>
-            <button onClick={handleMute}>{mute ? "Unmute" : "Mute"}</button>
-            <button onClick={handleMusic}>{music ? "🔈" : "🔇"}</button>
+            <button title="Raise player level by 1." onClick={handleLevelUp}>LEVEL UP</button>
+            <button title="Kill current enemy and spawn another at random." onClick={handleRespawn}>RESPAWN</button>
+            <button title="Reset progress and convert Lambent Orbs into Radiant." onClick={handleAscension}>ASCEND</button>
+            <button title="Increase crit chance by 10% (Max 70%)." onClick={handleCritChanceUpgrade}>Crit % UP</button>
+            <button title="Increase crit damage multiplier by 1." onClick={handleCritDMGUpgrade}>Crit DMG UP</button>
+            <button title="Mute sound effects." onClick={handleMute}>{mute ? "Unmute" : "Mute"}</button>
+            <button title="Mute music." onClick={handleMusic}>{music ? "🔈" : "🔇"}</button>
         </div>
         </div>
     );

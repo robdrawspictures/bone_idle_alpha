@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "../../Form.css"
 
 const EnemyForm = ({enemy, onCreate}) => {
 
@@ -40,15 +41,19 @@ const EnemyForm = ({enemy, onCreate}) => {
             <div className="enemy-form-container">
                 <h3>{heading}</h3>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Name" name="name" onChange={handleChange} value={stateEnemy.name}/>
-                    <input type="number" placeholder="HP" name="hp" onChange={handleChange} value={stateEnemy.hp}/>
-                    <select name="type" onChange={handleChange} defaultValue ={stateEnemy.type || "select-type"}>
+                    <label htmlFor="name">Name</label>
+                    <input id="name" type="text" placeholder="Name" name="name" onChange={handleChange} value={stateEnemy.name}/>
+                    <label htmlFor="hp">HP</label>
+                    <input id="hp" type="number" placeholder="HP" name="hp" onChange={handleChange} value={stateEnemy.hp}/>
+                    <label htmlFor="type">Type</label>
+                    <select id="type" name="type" onChange={handleChange} defaultValue ={stateEnemy.type || "select-type"}>
                         <option disabled value="select-type">Select Type</option>
                         <option value={stateEnemy.type}>BOSS</option>
                         <option value={stateEnemy.type}>MONSTER</option>
                     </select>
-                    <input type="text" placeholder="Enter a short description" name="bio" onChange={handleChange} value={stateEnemy.bio}/>
-                    <button type="submit">Add Monster</button>
+                    <label htmlFor="bio">Bio</label>
+                    <textarea id="bio" type="text" placeholder="Enter a short description" name="bio" onChange={handleChange} value={stateEnemy.bio}/>
+                    <button type="submit">Save Monster</button>
                 </form>
             </div>
         </>
