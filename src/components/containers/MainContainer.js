@@ -65,6 +65,12 @@ const MainContainer = () => {
         .then(() => {window.location = "/bestiary"})
     }
 
+    const handleDeleteAccount = (user) => {
+        const request = new Request();
+        request.delete("http://localhost:8080/api/users/" + user.id)
+        .then(() => {window.location = "/users"})
+    }
+
     return (
       <Router>
       <Fragment>
@@ -75,7 +81,7 @@ const MainContainer = () => {
         <Route path="/bestiary/:id" element={<EnemyDetail enemies={enemies} onEdit={handleEdit}/>}/>
         <Route path="/bestiary/*" element={<><EnemyList enemies={enemies} onDelete={handleDelete}/><EnemyForm onCreate={handlePost}/></>}/>
         <Route path="/forum/*" element={<ForumContainer/>}/>
-        <Route path="/users" element={<UserList users={users}/>}/>
+        <Route path="/users" element={<UserList users={users} onDelete={handleDeleteAccount}/>}/>
         <Route path="/users/:id" element={<UserDetail users={users}/>}/>
         <Route path="/create" element={<UserForm onCreateAccount={handleCreateAccount}/>}/>
         <Route path="*" element={<NotFound/>}/>
