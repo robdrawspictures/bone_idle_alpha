@@ -15,6 +15,7 @@ import UserDetail from '../forum/UserDetail.js';
 import UserForm from '../forum/UserForm';
 import ViewThread from '../forum/ViewThread.js';
 import CreateThread from '../forum/CreateThread.js';
+import CreatePost from '../forum/CreatePost.js';
 
 
 const MainContainer = () => {
@@ -78,6 +79,13 @@ const MainContainer = () => {
         .then(() => {window.location = "/forum"})
     }
 
+    const handleCreatePost = (post) => {
+        const request = new Request();
+        const url = "http://localhost:8080/api/posts"
+        request.post(url, post)
+        .then(() => {window.location.reload()})
+    }
+
     const handleEdit = (enemy) => {
         console.log(enemy.bio);
         const request = new Request();
@@ -113,7 +121,7 @@ const MainContainer = () => {
         <Route path="/users/:id" element={<UserDetail users={users}/>}/>
         <Route path="/create" element={<UserForm onCreateAccount={handleCreateAccount}/>}/>
         <Route path="/forum" element={<><CreateThread users={users} onCreateThread={handleCreateThread}/><ForumContainer threads={threads} posts={posts} users={users}/></>}/>
-        <Route path="/forum/:id" element={<ViewThread threads={threads} posts={posts}/>}/>
+        <Route path="/forum/:id" element={<><ViewThread threads={threads} posts={posts}/><CreatePost users={users} threads={threads} onCreatePost={handleCreatePost}/></>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
 

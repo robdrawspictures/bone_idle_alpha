@@ -6,7 +6,7 @@ const ViewThread = ({threads, posts}) => {
 
     const params = useParams();
 
-    if(!posts.length === 0){
+    if(posts.length === 0 & threads.length === 0){
         return <p>Loading...</p>
     }
 

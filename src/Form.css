@@ -23,3 +23,27 @@
   .thread-form-container form{
       display: inline
   }
+
+  .post-form-container {
+      margin: auto;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  .post-form-container textarea {
+    color: white;
+    background-color: rgb(48, 48, 48);
+    border: solid greenyellow 3px;
+    border-radius: 5px;
+
+  }
+
+  .post-form-container select {
+    color: white;
+    background-color: rgb(48, 48, 48);
+    border: solid greenyellow 3px;
+    border-radius: 5px;
+
+  }
