@@ -256,6 +256,7 @@ form {
 }
 
 .forum-post {
+  height: 200px;
   margin: 10px;
   font-family: Oswald;
   display: flex;

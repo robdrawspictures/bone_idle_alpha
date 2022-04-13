@@ -9,3 +9,17 @@
     display: flex;
     flex-direction: column;
   }
+
+  .thread-form-container {
+      margin: auto;
+      width: 80%;
+      background-color: rgba(48, 48, 48, 0.7);
+      border: solid greenyellow 3px;
+      border-radius: 5px;
+      padding: 10px;
+      justify-content: center;
+  }
+
+  .thread-form-container form{
+      display: inline
+  }
