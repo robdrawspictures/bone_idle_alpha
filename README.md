@@ -11,8 +11,6 @@
 
 Capstone project for Codeclan. An idle game (currently without the idle component) and some basic forum functionality.
 
-[<img src="https://github.com/robdrawspictures/bone_idle_alpha/blob/main/screenshots/game_window.png?raw=true" width="750"/>](https://github.com/robdrawspictures/bone_idle_alpha/blob/main/screenshots/game_window.png?raw=true "Game window")
-
 ### Current features:
 * Functional game
 * A roster of randomised monster and boss fights
