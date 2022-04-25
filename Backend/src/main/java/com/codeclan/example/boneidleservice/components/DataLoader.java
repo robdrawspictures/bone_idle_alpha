@@ -37,11 +37,17 @@ public class DataLoader implements ApplicationRunner {
         User user1 = new User("shinji_ikari", "I hate you, dad.", false);
         User user2 = new User("gendo_ikari", "I hate you, son.", true);
         User user3 = new User("asuka_langley", "I hate you all.", false);
-        User user4 = new User("misato_kusanagi", "I love beer.", true);
+        User user4 = new User("misato_katsuragi", "I love beer.", true);
+        User user5 = new User("son_goku", "I love fighting.", false);
+        User user6 = new User("vegeta", "I hate you, Kakarot.", true);
+        User user7 = new User("aisawa_taiga", "I love Kitamaru.", true);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
         userRepository.save(user4);
+        userRepository.save(user5);
+        userRepository.save(user6);
+        userRepository.save(user7);
 
         Enemy boss1 = new Enemy("Death", EnemyType.BOSS, 100, 100, "Lord of the underworld, the original goth.");
         Enemy boss2 = new Enemy("Sadako", EnemyType.BOSS, 100, 100, "Fell down a well, she'll send you to hell.");

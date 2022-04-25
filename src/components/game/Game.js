@@ -10,6 +10,7 @@ function Game({enemies}) {
     const [dmg, setDMG] = useState(10 * (level + radiantOrb));
     const [critDMG, setCritDMG] = useState(2);
     const [critChance, setCritChance] = useState(9);
+    const [dps, setDPS] = useState(true);
     const [xp, setXP] = useState(0);
     const [nextLevel, setNextLevel] = useState(100);
     const [killCount, setKillCount] = useState(0);
@@ -29,6 +30,15 @@ function Game({enemies}) {
             Assets.BGM.BGM.play();
         }
     }, [music])
+
+    // useEffect(() => {
+    //         let dpsAttack = handleDPS(() => {
+    //         setMonsterHP();
+    //         }, 1000);   
+        
+    //         if(dps){
+    //             dpsAttack();}
+    // }, [dps])
 
     const monsterFilter = enemies.filter(enemy => enemy.type === "MONSTER");
 
@@ -133,15 +143,20 @@ function Game({enemies}) {
         setDMG(10 * (level + radiantOrb));
         // Rather than reset the XP counter to zero, carry over any excess
         let remainingXP = xp - nextLevel;
-        setXP(remainingXP);
+        if(remainingXP > 0){
+        setXP(remainingXP)
+        } else{
+            setXP(0)
+        }
         let currentNextLevel = nextLevel;
         let newNextLevel = currentNextLevel * 2;
         setNextLevel(newNextLevel);
         console.log('LEVEL UP')
+        Assets.SFX.ClickFX.play();
     }
 
     const setMonsterHP = (currentMonster) => {
-        currentMonster.hp -= dmg;
+        currentMonster.hp -= 1;
     }
 
     const getMonsterHP = () => {
@@ -183,17 +198,20 @@ function Game({enemies}) {
         setLambentOrb(0);
         setAscensionCount(ascensionCount + 1);
         checkAscension();
+        Assets.SFX.ClickFX.play();
     }
 
     const handleCritChanceUpgrade = () => {
         if(critChance > 2){
         setCritChance(critChance - 1);
+        Assets.SFX.ClickFX.play();
         }
     }
 
     const handleCritDMGUpgrade = () => {
         if(critDMG < 10){
         setCritDMG(critDMG + 1);
+        Assets.SFX.ClickFX.play();
         }
     }
 

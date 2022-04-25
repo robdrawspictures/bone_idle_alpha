@@ -23,7 +23,7 @@ const NavBar = (props) => {
                     <Link to="/users"><button>Users</button></Link>
                 </li>
                 <li className="navLink">
-                    <Link to="/forum">Forum</Link>
+                    <Link to="/forum"><button>Forum</button></Link>
                 </li>
                 <li className="navLink">
                     <Link to="/create"><button>Create Account</button></Link>

@@ -11,6 +11,9 @@ import Screamer from "../assets/img/Screamer.PNG";
 import Oni from "../assets/img/Oni.PNG";
 import Hollow from "../assets/img/Hollow.PNG";
 import Emil from "../assets/img/Emil.PNG";
+import Dio from "../assets/img/Dio.PNG";
+import Sadako from "../assets/img/Sadako.PNG";
+import Death from "../assets/img/Death.PNG";
 import CorruptStatic from "../assets/img/CorruptStatic.jpg"
 import BitCorrupt from "../assets/img/BitCorrupt.gif";
 import Corrupt from "../assets/img/Corrupt.gif";
@@ -21,6 +24,11 @@ import Pepe from "../assets/img/Pepe.PNG";
 import shinji_ikari from "../assets/img/shinji_ikari.png"
 import gendo_ikari from "../assets/img/gendo_ikari.png"
 import asuka_langley from "../assets/img/asuka_langley.png"
+import misato_katsuragi from "../assets/img/misato_katsuragi.png"
+import son_goku from "../assets/img/son_goku.png"
+import vegeta from "../assets/img/vegeta.png"
+import aisawa_taiga from "../assets/img/aisawa_taiga.png"
+import Chris from "../assets/img/Chris.jpeg"
 
 //BACKGROUND IMAGE
 // CREDIT: https://franky_paleone.artstation.com/projects/lVwBEz
@@ -35,6 +43,7 @@ import Radiant from "../assets/img/Radiant.PNG";
 //SFX
 import DeathFX from "../assets/sfx/death.mp3";
 import AttackFX from "../assets/sfx/attack.mp3";
+import Click from "../assets/sfx/FFVII.mp3";
 
 //BGM
 import Music from "../assets/mus/BG.mp3";
@@ -53,6 +62,9 @@ const Images = {
     Oni,
     Hollow,
     Emil,
+    Dio,
+    Sadako,
+    Death,
     CorruptStatic,
     BitCorrupt,
     Corrupt,
@@ -63,7 +75,12 @@ const Images = {
 const Avatars = {
     shinji_ikari,
     gendo_ikari,
-    asuka_langley
+    asuka_langley,
+    misato_katsuragi,
+    son_goku,
+    vegeta,
+    aisawa_taiga,
+    Chris
 }
 
 const Background = {
@@ -80,7 +97,8 @@ const Icons = {
 
 const SFX = {
     DeathFX: new Audio(DeathFX),
-    AttackFX: new Audio(AttackFX)
+    AttackFX: new Audio(AttackFX),
+    ClickFX: new Audio(Click)
 
 }
 

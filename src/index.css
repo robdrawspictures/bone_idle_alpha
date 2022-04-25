@@ -39,7 +39,7 @@ header {
 }
 
 .nav-links {
-  width: 60%;
+  width: 70%;
   margin: auto;
   padding: 10px;
   border: white dotted 3px;
@@ -79,7 +79,7 @@ header {
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
-  background-color: rgb(48, 48, 48);
+  background-image: linear-gradient(rgb(28, 127, 220), rgb(24, 64, 120), rgb(7, 27, 91));
 }
 
 .stat-container{
@@ -89,7 +89,7 @@ header {
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
-  background-color: rgb(48, 48, 48);
+  background-image: linear-gradient(rgb(28, 127, 220), rgb(24, 64, 120), rgb(7, 27, 91));
 }
 
 .trophy-container {
@@ -99,7 +99,7 @@ header {
   padding: 20px;
   border: solid white 3px;
   border-radius: 5px;
-  background-color: rgb(48, 48, 48);
+  background-image: linear-gradient(rgb(28, 127, 220), rgb(24, 64, 120), rgb(7, 27, 91));
 }
 
 .trophies {
@@ -162,15 +162,15 @@ header {
 }
 
 .enemy-detail {
-  margin: 10px;
+  margin: auto;
 }
 
 .enemy-detail-container {
+  margin: auto;
   display: flex;
   flex-direction: row;
-  margin: 25px;
   padding: 5px;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 /* .img-overlay {
@@ -181,16 +181,19 @@ header {
 .enemy-detail-img {
   /* position: absolute;
   z-index: -1; */
-  flex: 1;
-  padding: 20px;
-  background-image: linear-gradient(rgb(139, 172, 15), rgb(15, 56, 15));
+  width: 20%;
+  padding: 10px;
+  /* background-image: linear-gradient(rgb(139, 172, 15), rgb(15, 56, 15)); */
+  background-color: black;
+  border: solid white 5px;
   border-radius: 5px;
+  align-items: center;
 
 }
 
 .enemy-detail-info {
-  flex: 3;
-  padding: 20px;
+  width: 50%;
+  padding: 10px;
   border: solid white 3px;
   border-radius: 5px;
 }
